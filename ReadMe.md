@@ -66,7 +66,7 @@ The dynamicColor property returns the color value set for the screen mode.
 
 
 ## Example
-**SwiftUI**
+**SwiftUI** <br>
 ![ex_screenshot](./screenshot/SwifUIExample.png)
 ```swift
 // Setting colorsets with extensions
