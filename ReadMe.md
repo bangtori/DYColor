@@ -8,6 +8,18 @@ You can easily register and use Dynamic Colors used to counteract Dark Mode as c
 [![Platform](https://img.shields.io/cocoapods/p/YMLogoAlert.svg?style=flat)](https://cocoapods.org/pods/YMLogoAlert)
 
 
+## Install
+
+### Swift Package Manager
+```
+https://github.com/bangtori/DYColor.git
+```
+
+## Requirements
+- iOS 14.0
+- Swift 5
+
+
 ## About
 ### Color Extension 
 We provide Color extensions that not only help you implement DYColor, but also help with custom development.<br><br>
@@ -54,20 +66,39 @@ The dynamicColor property returns the color value set for the screen mode.
 
 
 ## Example
-
-
-## Requirements
-- iOS 14.0
-- Swift 5
-
-
-## Installation
-
-### Swift Package Manager
+**SwiftUI**
+![ex_screenshot](./screenshot/SwifUIExample.png)
+```swift
+// Setting colorsets with extensions
+extension DYColor {
+    static let color1 = DYColor(lightColor: .black, darkColor: .red) // basic initialization
+    static let color2 = DYColor(lightColor: .blue) // lightColor only initialization
+}
+struct ContentView: View {
+    @Environment(\.colorScheme) var scheme // scheme Declarations
+    
+    var body: some View {
+        VStack {
+            Text("Light Black, Dark Red")
+                .foregroundStyle(DYColor.color1.dynamicColor) // use color1 dynamicColor (DYColor)
+                .padding()
+            VStack{
+                Text("This is DYColor Blue")
+                Text("Dark - 70%saturation")
+            }
+            .font(.title)
+            .foregroundStyle(DYColor.color2.dynamicColor) // use color2 dynamicColor (DYColor)
+            .padding()
+            Text("This is normal Blue")
+                .font(.title)
+                .foregroundStyle(Color.blue) 
+                // use basic Color (SwiftUI - Color)
+                // color2 VS basic color saturation in dark mode
+        }
+        .padding()
+    }
+}
 ```
-https://github.com/bangtori/DYColor.git
-```
-
 
 ## License
 
