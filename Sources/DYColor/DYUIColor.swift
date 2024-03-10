@@ -13,13 +13,8 @@ public struct DYUIColor {
     private let darkColor: UIColor
     
     public var dynamicColor: UIColor {
-        switch UITraitCollection.current.userInterfaceStyle {
-        case .unspecified, .light:
-            return lightColor
-        case .dark:
-            return darkColor
-        @unknown default:
-            return lightColor
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .dark ? darkColor : lightColor
         }
     }
     
